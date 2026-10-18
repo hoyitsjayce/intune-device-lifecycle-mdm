@@ -35,14 +35,25 @@ The goal was to simulate how a help desk onboards and offboards company laptops 
 | Policies | Win11-Baseline-Compliance, Win11-BitLocker-Policy, Win11-Security-Baseline |
 | App | 7-Zip 26.04 x64 (Win32 app) |
 
+### Results at a Glance
+
+| Metric | Result |
+|---|---|
+| Devices enrolled and managed | 1 Windows 11 Enterprise VM |
+| Policies deployed | 3 (compliance, BitLocker, security baseline) |
+| Apps deployed silently | 1 (7-Zip, no user action) |
+| Final device state | Configuration Succeeded 3, Compliance Compliant 2, Apps Installed 1 |
+| Offboarding | Device wiped, records removed, enrolled devices = 0 |
+| Issues resolved | 9, each with a documented root cause |
+
 ## How the Device Lifecycle Works
 
-Tenant, user, and groups created ↓
-Device signs in with a work account, Entra joins, and auto-enrolls into Intune ↓
-Compliance and BitLocker policies define and enforce a healthy device ↓
-Security profile and required app pushed to the device group ↓
-Device checks in, reports compliant, and the app installs silently ↓
-Employee leaves: device is wiped and its records removed
+1. Tenant, user, and groups created
+2. Device signs in with a work account, Entra joins, and auto-enrolls into Intune
+3. Compliance and BitLocker policies define and enforce a healthy device
+4. Security profile and required app pushed to the device group
+5. Device checks in, reports compliant, and the app installs silently
+6. Employee leaves: device is wiped and its records removed
 
 ## Phase A — Tenant, Users & Groups
 
