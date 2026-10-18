@@ -83,7 +83,7 @@ The "Compliant" badge at this point is misleading. It comes from Intune's defaul
 
 ![Compliance settings](screenshots/c-compliance-settings-health.png)
 
-A compliance policy only checks encryption, it doesn't turn it on. **Win11-BitLocker-Policy** enforces it silently with the TPM (Used Space Only, no PIN, 48-digit recovery password escrowed to Entra ID). `manage-bde -status` confirmed Protection On:
+A compliance policy only checks encryption, it doesn't turn it on. **Win11-BitLocker-Policy** enforces it silently with the TPM (Used Space Only, no PIN, 48-digit recovery password enabled). `manage-bde -status` confirmed Protection On:
 
 ![manage-bde protection on](screenshots/c-bitlocker-protection-on.png)
 
@@ -174,13 +174,14 @@ Resolution: Removed the disk from the optical drive, restarted, and synced. Prot
 | Security baseline never applied | Group was under Excluded, and exclusion wins | Moved it to Included |
 | 7-Zip missing after "successful" sync | The Intune Management Extension checks in on its own cycle | Forced a device-side sync |
 | Retire unsupported | Not supported on Entra-joined devices | Used Wipe |
+| Default policy showed "Compliant" with no policies | Built-in default compliance policy | Verified with the per-setting status report |
 
 ## Key Concepts Demonstrated
 
 - Entra join and automatic MDM enrollment
 - Compliance policy vs configuration profile, and why BitLocker needs both
 - Group-based assignment: user vs device groups, Included vs Excluded (exclusion wins)
-- BitLocker with TPM and recovery key escrow, `manage-bde` troubleshooting
+- BitLocker with TPM and recovery password, `manage-bde` troubleshooting
 - Win32 app packaging, silent install, and detection rules
 - Retire vs Wipe vs Delete, and stale Entra object cleanup
 
